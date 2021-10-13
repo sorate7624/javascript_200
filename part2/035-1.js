@@ -6,6 +6,11 @@ function checkNumber(val) {
   console.log('숫자형 값으로 확인되었습니다.');
 }
 
-checkNumber(100);
-checkNumber('Wrong type');
-console.log('완료');
+try {
+  checkNumber(100);
+  checkNumber('Wrong type');
+} catch (e) {
+  console.log(`에러가 발생했습니다 >>> ${e}`);
+} finally {
+  console.log('완료');
+}
