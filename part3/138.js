@@ -5,7 +5,7 @@ function promiseFoHomework(mustDo) {
       console.log('doing homework');
       if (mustDo) {
         resolve({
-          result: 'homework-result'
+          result: 'homework-result',
         });
       } else {
         reject(new Error('Too lazy!'));
