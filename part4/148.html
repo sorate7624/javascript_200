@@ -7,10 +7,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    #prevent {
+      border: 1px solid red;
+    }
+  </style>
 </head>
 
 <body>
+  <p>일반적인 글
+    <span id="prevent">이벤트를 막은 글</span>
+    <br>
+    일반적인 글2
+  </p>
+  <script>
+    const normalPEl = document.querySelector("p");
+    const eventPreventedEl = document.querySelector("#prevent");
+    normalPEl.addEventListener("contextmenu", () => {
+      console.log("contextmenu 호출");
+    });
 
+    eventPreventedEl.addEventListener("contextmenu", (event) => {
+      console.log("이벤트 막은 글 클릭");
+      event.stopPropatation();
+      event.preventDefaul();
+    });
+  </script>
 </body>
 
 </html>
