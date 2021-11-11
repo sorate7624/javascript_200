@@ -1,4 +1,4 @@
-<!-- 이ㅔ트 위임 처리하기 -->
+<!-- 이벤트 위임 처리하기 -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +10,23 @@
 </head>
 
 <body>
+  <h2>할 일</h2>
+  <ul id="todo-list">
+    <li>공부하기<button class="remove-button">x</button></li>
+    <li>장보기<button class="remove-button">x</button></li>
+    <li>숙제하기<button class="remove-button">x</button></li>
+  </ul>
+  <script>
+    document.querySelector("ul#todo-list").addEventListener("click", (e) => {
+      if (e.target.className.indexOf("remove-button") < 0) {
+        return;
+      }
+      const li = e.target.closest('li');
+      console.log(`${li.innerText} 삭제`);
 
+      li.remove();
+    });
+  </script>
 </body>
 
 </html>
