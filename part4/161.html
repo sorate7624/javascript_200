@@ -1,5 +1,4 @@
-<!-- 웹 워커로 백그라운드 코드 실행하기
- -->
+<!-- 웹 워커로 백그라운드 코드 실행하기 -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +10,40 @@
 </head>
 
 <body>
+  <div>
+    <input type="text" id="number">
+    <button id="start-btn">피보나치수열 계산시작</button>
+  </div>
+  <div id="result"></div>
+  <script>
+    const result = document.querySelector('#result');
+    let isCalculation = false;
+    if (window.Worker) {
+      const fibonacciWorker = new Worker('./161.js');
+      document.querySelector('#start-btn').addEventListener('click', e => {
+        if (isCalculation) {
+          return;
+        }
 
+        const value = document.querySelector('#number').value;
+        fibonacciWorker.postMessage({
+          num: value
+        });
+        result.innerHTML = '계산 중...';
+        isCalculation = true;
+      });
+      fibonacciWorker.onmessage = function (e) {
+        result.innerHTML = e.data;
+        isCalculation = false;
+      }
+
+      fibonacciWorker.onerror = function (e) {
+        console.log('에러 발생', e.message);
+        result.innerHTML = e.message;
+        isCalculation = false;
+      }
+    }
+  </script>
 </body>
 
 </html>
