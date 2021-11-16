@@ -1,9 +1,9 @@
 // 웹 워커로 백그라운드 코드 실행하기
-function fibonacci(num) {
+function fibonacciWorker(num) {
   if (num <= 1) {
     return 1;
   }
-  return fibonacci(num - 1) + fibonacci(num - 2);
+  return fibonacciWorker(num - 1) + fibonacciWorker(num - 2);
 }
 
 onmessage = function (e) {
@@ -14,6 +14,6 @@ onmessage = function (e) {
     throw new Error('숫자를 전달하지 않았습니다.');
   }
 
-  const result = fibonacci(num);
+  const result = fibonacciWorker(num);
   this.postMessage(result);
 }
