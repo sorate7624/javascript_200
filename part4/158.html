@@ -10,7 +10,25 @@
 </head>
 
 <body>
+  <div>
+    <label>결제금액 :</label><b>20000원</b>
+    <br>
+    <button id="checkout-btn">카드입력</button>
+  </div>
+  <iframe id="cart-payment" width="500px" height="200px" frameborder="0"></iframe>
+  <script>
+    const iWindow = document.querySelector('#cart-payment').contentWindow;
 
+    document.querySelector('#checkout-btn').addEventListener('click', e => {
+      iWindow.location.href = '158_1.html'
+    });
+
+    window.addEventListener('message', e => {
+      if (e.data.holderName) {
+        console.log(e.data);
+      }
+    });
+  </script>
 </body>
 
 </html>

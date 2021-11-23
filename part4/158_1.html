@@ -1,0 +1,37 @@
+<!-- iframe과 메시지 교환하기 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function submitForm() {
+      const form = document.querySelector('#card-form');
+      const formData = new FormData(form);
+      const formObj = {
+        cardNumber: formData.get('cardNumber'),
+        holderNumber: formData.get('holderNumber')
+      };
+      window.parent.postMessage(formObj, '*');
+    }
+  </script>
+  <form onsubmit="submitForm()" id="card-form">
+    <div>
+      <label>카드번호</label>
+      <input type="text" name="cardNumber">
+    </div>
+    <div>
+      <label>이름</label>
+      <input type="text" name="holderName">
+    </div>
+    <button type="submit">결제하기</button>
+  </form>
+</body>
+
+</html>
