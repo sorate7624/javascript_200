@@ -7,10 +7,56 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+    }
+
+    .hero {
+      height: 100px;
+      padding: 20px;
+      text-align: center;
+      background-color: #ccc;
+    }
+
+    nav {
+      background-color: black;
+      padding: 10px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .articles {
+      height: 2000px;
+    }
+  </style>
 </head>
 
 <body>
-
+  <section class="hero">
+    <h1>스크롤을 아래로 내려보세요.</h1>
+  </section>
+  <nav>
+    <a href="https://javascript-200.com">자바스크립트 200제</a>
+  </nav>
+  <section class="articles"></section>
+  <script>
+    const nav = document.querySelector('nav');
+    const navTopOffSet = nav.offsetTop;
+    window.addEventListener('scroll', e => {
+      if (window.pageYOffset >= navTopOffSet) {
+        nav.style.position = 'fixed';
+        nav.style.top = 0;
+        nav.style.left = 0;
+        nav.style.right = 0;
+      } else {
+        nav.style.position = '';
+        nav.style.top = '';
+      }
+    });
+  </script>
 </body>
 
 </html>
