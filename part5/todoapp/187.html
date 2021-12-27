@@ -1,0 +1,42 @@
+<!-- 할 일 앱 만들기 예제 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>할 일 앱 만들기 예제</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="title">
+    <h1>나의 하루</h1>
+    <h2>10월 28일</h2>
+  </div>
+  <div class="todo-container"></div>
+  <div class="add-todo">
+    <button>+</button>
+    <input type="text" placeholder="할 일 추가">
+  </div>
+  <script src="./models.js"></script>
+  <script src="./app.js"></script>
+  <script>
+    const todoApp = new TodoApp([{
+        contens: "공부하기",
+        done: false
+      },
+      {
+        contens: "놀기",
+        done: true
+      },
+      {
+        contens: "밥먹기",
+        done: false
+      }
+    ]);
+  </script>
+</body>
+
+</html>
