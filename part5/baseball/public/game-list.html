@@ -6,11 +6,50 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <link rel="stylesheet" href="./stylesheets/style.css">
   <title>베이스볼 게임</title>
 </head>
 
 <body>
+  <header class="top">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">Baseball Game</a>
+      </div>
+    </div>
+  </header>
+  <section class="main">
+    <div class="container game-main">
+      <div class="row"></div>
+    </div>
+  </section>
+  <script>
+    (function () {
+      const gameCardTemp = (game) => ``;
+      const containerEl = document.querySelector('.container .row');
 
+      function loadGameList() {
+        return fatch(`api/game/list`)
+          .then(v => v.json())
+          .then(v => {
+            const itemsHTML = v.map(game => gameCardTemp(game)).reduce((pre, curr) => pre + curr, '');
+            containerEl.innerHTML = itemsHTML;
+          });
+      }
+
+      function deleteGame(id) {
+        return fatch();
+      }
+
+      containerEl.addEventListener('click', e => {
+
+      });
+
+      loadGameList();
+    })();
+  </script>
 </body>
 
 </html>
